@@ -3,8 +3,7 @@ class ProjectsController < ApplicationController
     get '/projects' do
         if logged_in?
           @user = current_user
-          @projects = Project.all
-          
+          @projects = Project.find_by_user_id(@user.id)
           erb :'projects/projects'
         else
           @projects = Project.all
@@ -39,7 +38,8 @@ class ProjectsController < ApplicationController
 
     get '/projects/:id' do
       if logged_in?
-        @project = Project.find_by_id(params[:id])
+        @user = current_user
+        @project = Project.find(params[:id])
         erb :'projects/show'
       else
         redirect to '/login'
@@ -59,7 +59,7 @@ class ProjectsController < ApplicationController
   
     get '/projects/:id/edit' do
       if logged_in?
-        @project = Project.find_by_id(params[:id])
+        @project = Project.find(params[:id])
         if @project && @project.user == current_user
           erb :'projects/edit'
         else
