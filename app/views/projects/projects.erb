@@ -1,22 +1,25 @@
 <h1>Welcome, <%= @user.username %>!</h1>
 
-<h2 id="top-h2">Projects for You</h2>
+<p>Click <a href="/projects/new" id="new-project">here</a> to submit your project!</p>
+
+<h2 id="top-h2">Our Latest Project</h2>
 
 <% if @projects.empty? %>
     <p>Oops! We're still working to get more users on board! Please bear with us.</p>
 <% else %>
     <% @projects.each do |project| %>
-        <div class="project scroll">
-            <h2><a href="/projects/<%= project.id %>"><%= project.title %></a> </h2>
-            <p>Category:  <%= project.category %> </p>
-            <p>Description:  <%= project.description %> </p>
+        <div class="project">
+            <h2 id="project-title"><a href="/projects/<%= project.id %>"><%= project.title %></a> </h2>
+            <div class="video">
+                <iframe src="<%= project.video_url %>" width="640" height="400" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p> <%= project.category %> </p>
+            <p id="description"> <%= project.description %> </p>
             <p><a href="<%= project.github %>" id="link-blue">GitHub Repo</a> </p>
-            <p><a href="<%= project.external_uri %>" id="link-blue">External Link</a> </p>
-            <p> Made by <%= project.user.username %> </p>
+            <p><a href="<%= project.external_uri %>" id="link-blue">Project URL</a> </p>
+            <p>Made by  <em><a href="/users/<%= project.user.slug %>"><%= project.user.username %></a></em ></p>
         </div>
     <% end %>
 <% end %>
-
-<p>Click <a href="/projects/new" id="new-project">here</a> to submit your project!</p>
 
 <p><button><a href="/logout">Log Out</a></button></p>

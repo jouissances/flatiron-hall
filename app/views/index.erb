@@ -3,9 +3,12 @@
     <% @projects.each do |project| %>
         <div class="project">
             <h2> <a href="/projects/<%= project.id %>"><%= project.title %></a> </h2>
+            <div class="video">
+                <iframe src="<%= project.video_url %>" width="640" height="400" frameborder="0" allowfullscreen></iframe>
+            </div>
             <p> <%= project.category %> </p>
             <p id="description"> <%= project.description %> </p>
-            <p><em>— made by</em>  <a href="/users/<%= project.user.slug %>"><%= project.user.username %></a> </p>
+            <p>— made by  <em><a href="/users/<%= project.user.slug %>"><%= project.user.username %></a></em ></p>
         </div>
     <% end %>
 

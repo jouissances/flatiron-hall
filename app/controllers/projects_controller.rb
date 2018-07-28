@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
         if logged_in?
           @user = current_user
           @projects = Project.all
+          
           erb :'projects/projects'
         else
           @projects = Project.all
@@ -21,12 +22,15 @@ class ProjectsController < ApplicationController
     
     post '/projects' do
         if logged_in?
-            if params.values.any? { |val| val == "" }
-                redirect '/projects/new'
+            @user = current_user
+            if params[:title] == ""
+              redirect '/projects/new'
             else
-                @user = current_user
-                @project = Project.create(:id => params[:id], :title => params[:title], :category => params[:category], :description => params[:description], :github => params[:github], :external_uri => params[:external_uri], :user_id => session[:user_id])
-                redirect to "/projects/#{@project.id}"
+              if params[:video_url] == ""
+                params[:video_url] = Project.columns_hash['video_url'].default
+              end
+              @project = Project.create(:id => params[:id], :title => params[:title], :category => params[:category], :description => params[:description], :github => params[:github], :external_uri => params[:external_uri], :user_id => session[:user_id], :video_url => params[:video_url])
+              redirect to "/projects/#{@project.id}"
             end
         else
             redirect '/login'
@@ -69,13 +73,12 @@ class ProjectsController < ApplicationController
     patch '/projects/:id' do
         if logged_in?
           @user = current_user
-          if params[:content] == ""
-            @project = Project.find(params[:id])
+          @project = Project.find(params[:id])
+          if params[:title] == ""
             redirect to "/projects/#{@project.id}/edit"
           else
-            @project = Project.find(params[:id])
             if @project && @project.user == current_user
-              @project.update(:title => params[:title], :category => params[:category], :description => params[:description], :github => params[:github], :external_uri => params[:external_uri])
+              @project.update(:title => params[:title], :category => params[:category], :description => params[:description], :github => params[:github], :external_uri => params[:external_uri], :video_url => params[:video_url])
               redirect to "/projects/#{@project.id}"
             else
               redirect to '/projects'

@@ -17,7 +17,11 @@
             <a href="/about">About        <img src="/icons/book.png"></a>
             <a href="https://github.com/jouissances/flatiron-hall">GitHub         <img src="/icons/github.png"></a>
             <a href="/register">Register           <img src="/icons/log-in.png"></a>
-            <a href="/login">Log In        <img src="/icons/log-out.png"></a>
+            <% if !logged_in? %>
+                <a href="/login">Log In        <img src="/icons/log-out.png"></a>
+            <% else %>
+                <a href="/login">Dashboard          <img src="/icons/log-out.png"></a>
+            <% end %>
         </nav>
     </div>
 

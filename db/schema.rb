@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180728013849) do
+ActiveRecord::Schema.define(version: 20180728053456) do
 
   create_table "projects", force: :cascade do |t|
     t.string  "title"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20180728013849) do
     t.string  "github"
     t.string  "external_uri"
     t.integer "user_id"
-    t.string  "youtube_url"
+    t.string  "video_url",    default: "https://i.imgur.com/x3o5Us1.png"
   end
 
   create_table "users", force: :cascade do |t|

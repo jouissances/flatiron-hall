@@ -19,9 +19,13 @@ h2 {
   text-align: center;
 }
 
-#top-h2 {
-  margin-top: 10vh;
-}
+  #top-h2 {
+    margin-top: 5vh;
+  }
+
+  #project-title a {
+    font-family: "Px Grotesk";
+  }
 
 header h1 {
   font-family: "Px Grotesk";
@@ -101,25 +105,36 @@ a {
 }
 
 .projects {
-  display: flexbox;
+  display: flex;
 }
 
 .project {
   margin: auto;
   text-align: center;
-  width: 30vw;
-  height: 250px;
-}
-
-.scroll {
-  height: 150px;
-  overflow: scroll;
+  width: 350px;
+  height: 100%;
   padding: 15px;
   border-bottom: 1px solid #333333;
+
+}
+
+.video {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%;
+}
+
+.video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 #description {
   font-size: 10px;
+  line-height: 1.2rem;
   margin: 0 25px;
   color: #999999;
   text-align: center;
