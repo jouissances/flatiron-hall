@@ -1,14 +1,14 @@
 <div class="projects">
 
     <% @projects.each do |project| %>
-        <div class="project">
-            <h2> <a href="/projects/<%= project.id %>"><%= project.title %></a> </h2>
+        <div class="project <%= project.category.downcase %>">
+            <h2 id="project-title"> <a href="/projects/<%= project.id %>"><%= project.title %></a> </h2>
             <div class="video">
                 <iframe src="<%= project.video_url %>" width="640" height="400" frameborder="0" allowfullscreen></iframe>
             </div>
-            <p> <%= project.category %> </p>
+            <p id="brand-1"></p>
             <p id="description"> <%= project.description %> </p>
-            <p>— made by  <em><a href="/users/<%= project.user.slug %>"><%= project.user.username %></a></em ></p>
+            <p>— made by  <em><a href="/users/<%= project.user.slug %>" id="link-blue"><%= project.user.username %></a></em > | <%= project.category %></p>
         </div>
     <% end %>
 
