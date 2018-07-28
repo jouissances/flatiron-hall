@@ -1,0 +1,22 @@
+<h1>Welcome, <%= @user.username %>!</h1>
+
+<h2 id="top-h2">Projects for You</h2>
+
+<% if @projects.empty? %>
+    <p>Oops! We're still working to get more users on board! Please bear with us.</p>
+<% else %>
+    <% @projects.each do |project| %>
+        <div class="project scroll">
+            <h2><a href="/projects/<%= project.id %>"><%= project.title %></a> </h2>
+            <p>Category:  <%= project.category %> </p>
+            <p>Description:  <%= project.description %> </p>
+            <p><a href="<%= project.github %>" id="link-blue">GitHub Repo</a> </p>
+            <p><a href="<%= project.external_uri %>" id="link-blue">External Link</a> </p>
+            <p> Made by <%= project.user.username %> </p>
+        </div>
+    <% end %>
+<% end %>
+
+<p>Click <a href="/projects/new" id="new-project">here</a> to submit your project!</p>
+
+<p><button><a href="/logout">Log Out</a></button></p>

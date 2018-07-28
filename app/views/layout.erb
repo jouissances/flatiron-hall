@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Flatiron Hall — Web Application Inspirations</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+
+    <header>
+        <a href="#" class="menu-toggle"><img src="/icons/menu.png"></a>
+        <h1>Flatiron Hall</h1>
+    </header>
+
+    <div class="menu">
+        <nav>
+            <a href="/home">Home        <img src="/icons/home.png"></a>
+            <a href="/about">About        <img src="/icons/book.png"></a>
+            <a href="https://github.com/jouissances/flatiron-hall">GitHub         <img src="/icons/github.png"></a>
+            <a href="/register">Register           <img src="/icons/log-in.png"></a>
+            <a href="/login">Log In        <img src="/icons/log-out.png"></a>
+        </nav>
+    </div>
+
+    <%= yield %>
+
+    <footer>
+        <p id="footer">Made with ♥ for the students of Flatiron School</p>
+    </footer>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

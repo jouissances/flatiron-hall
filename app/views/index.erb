@@ -1,0 +1,12 @@
+<div class="projects">
+
+    <% @projects.each do |project| %>
+        <div class="project">
+            <h2> <a href="/projects/<%= project.id %>"><%= project.title %></a> </h2>
+            <p> <%= project.category %> </p>
+            <p id="description"> <%= project.description %> </p>
+            <p><em>— made by</em>  <a href="/users/<%= project.user.slug %>"><%= project.user.username %></a> </p>
+        </div>
+    <% end %>
+
+</div>

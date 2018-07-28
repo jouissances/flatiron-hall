@@ -1,0 +1,19 @@
+<h1>Submit Your Project!</h1>
+
+<form method="POST" action="/projects">
+
+    <p>Project Title: <input type="text" name="title"></p>
+    <p>Type: 
+      <input type="radio" name="category" value="CLI">CLI
+      <input type="radio" name="category" value="Sinatra">Sinatra
+      <input type="radio" name="category" value="Rails">Rails
+      <input type="radio" name="category" value="React">React
+      <input type="radio" name="category" value="Others">Others
+    </p>
+    <p>Project Description: <input type="text" name="description"></p>
+    <p>GitHub Repo: <input type="text" name="github"></p>
+    <p>URL: <input type="text" name="external_uri"></p>
+
+  <input type="submit" id="submit" value="Submit">
+
+</form>

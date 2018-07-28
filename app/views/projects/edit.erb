@@ -1,0 +1,21 @@
+<h2> Edit Project </h2>
+
+<form method="post" action="/projects/<%= @project.id %>">
+
+  <input name="_method" type="hidden" value="PATCH">
+
+  <p>Project Title: <input type="text" name="title" value="<%= @project.title %>"></p>
+  <p>Category: 
+    <input type="radio" name="category" value="CLI" <%='checked' if @project.category == "CLI" %>>CLI
+    <input type="radio" name="category" value="Sinatra" <%='checked' if @project.category == "Sinatra" %>>Sinatra
+    <input type="radio" name="category" value="Rails" <%='checked' if @project.category == "Rails" %>>Rails
+    <input type="radio" name="category" value="React" <%='checked' if @project.category == "React" %>>React
+    <input type="radio" name="category" value="Others" <%='checked' if @project.category == "Others" %>>Others
+  </p>
+  <p>Project Description: <input type="text" name="description" value="<%= @project.description %>"></p>
+  <p>GitHub Repo: <input type="text" name="github" value="<%= @project.github %>"></p>
+  <p>URL: <input type="text" name="external_uri" value="<%= @project.external_uri %>"></p>
+
+  <input type="submit" value="Submit">
+
+</form>

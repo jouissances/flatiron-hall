@@ -1,0 +1,10 @@
+<h1>User-Projects Show Test</h1>
+
+<% @projects.each do |project| %>
+    <p> <%= project.title %> </p>
+    <p> <%= project.category %> </p>
+    <p> <%= project.description %> </p>
+    <p> <%= project.github %> </p>
+    <p> <%= project.external_uri %> </p>
+    <p> <%= project.user.username %> </p>
+<% end %>
