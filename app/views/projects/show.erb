@@ -5,16 +5,20 @@
   </div>
   <p>Category: <%= @project.category %> </p>
   <p>Description: <%= @project.description %> </p>
-  <p>GitHub Repo: <a href="<%= @project.github %>"><%= @project.github %></a> </p>
-  <p>Project URL: <a href="<%= @project.external_uri %>"><%= @project.external_uri %></a> </p>
-  <p>Made by <%= @project.user.username %> </p>
+  <p>GitHub Repo: <a href="<%= @project.github %>" id="link-blue"><%= @project.github %></a> </p>
+  <p>Project URL: <a href="<%= @project.external_uri %>" id="link-blue"><%= @project.external_uri %></a> </p>
+  <p>Made by <a href="/users/<%= @project.user.slug %>" id="link-blue"><%= @project.user.username %></a> </p>
 </div>
 
-<form method="POST" action="/projects/<%= @project.id %>/delete">
+<% if @user == @project.user %>
+  <button class="center"><a href="/projects/<%= @project.id %>/edit">Edit Project </a></button>
 
-  <input name="_method" type="hidden" value="DELETE">
-  <input type="submit" id="submit" value="Delete Project">
+  <form method="POST" action="/projects/<%= @project.id %>/delete" class="form">
 
-</form>
+    <input name="_method" type="hidden" value="DELETE">
+    <input type="submit" id="submit" value="Delete Project">
 
-<a href="/projects/<%= @project.id %>/edit">Edit Project </a>
+  </form>
+<% else %>
+  <% nil %>
+<% end %>
