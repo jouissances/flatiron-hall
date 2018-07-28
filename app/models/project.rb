@@ -11,4 +11,8 @@ class Project < ActiveRecord::Base
         Project.all.find { |project| project.slug == slug }
     end
 
+    def self.find_by_user_id(user_id)
+        Project.all.select { |project| project.user_id == user_id }
+    end
+
 end
