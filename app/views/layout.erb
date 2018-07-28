@@ -8,7 +8,21 @@
 
     <header>
         <a href="#" class="menu-toggle"><img src="/icons/menu.png"></a>
-        <h1>Flatiron Hall</h1>
+        <a href="/" id="title" class="center">Flatiron Hall</a>
+        <% if request.path_info == '/home' || request.path_info == '/'  %>
+            <ul class="nano-content">
+                <li class="sub-menu">
+                    <a href="#"><span class="placeholder">Filter by Type<img src="/icons/sliders.png"></span></a>
+                    <ul>
+                        <li><a href="#" data-filter=".project">All</a></li>
+                        <li><a href="#" data-filter=".cli">CLI</a></li>
+                        <li><a href="#" data-filter=".rails">Rails</a></li>
+                        <li><a href="#" data-filter=".react">React</a></li>
+                        <li><a href="#" data-filter=".others">Others</a></li>
+                    </ul>
+                </li>
+            </ul>
+        <% end %>
     </header>
 
     <div class="menu">
@@ -16,19 +30,24 @@
             <a href="/home">Home        <img src="/icons/home.png"></a>
             <a href="/about">About        <img src="/icons/book.png"></a>
             <a href="https://github.com/jouissances/flatiron-hall">GitHub         <img src="/icons/github.png"></a>
-            <a href="/register">Register           <img src="/icons/log-in.png"></a>
             <% if !logged_in? %>
-                <a href="/login">Log In        <img src="/icons/log-out.png"></a>
+                <a href="/register">Register           <img src="/icons/user.png"></a>
+                <a href="/login">Log In        <img src="/icons/log-in.png"></a>
             <% else %>
-                <a href="/login">Dashboard          <img src="/icons/log-out.png"></a>
+                <a href="/login">Dashboard          <img src="/icons/user.png"></a>
+                <a href="/logout">Log Out       <img src="/icons/log-out.png"></a>
             <% end %>
         </nav>
     </div>
 
-    <%= yield %>
+    <div class="main">
 
+        <%= yield %>
+
+    </div>
+    
     <footer>
-        <p id="footer">Made with ♥ for the students of Flatiron School</p>
+        <p id="footer">Made with ♥ for the students of <a href="https://flatironschool.com/" id="link-blue">Flatiron School</a></p>
     </footer>
 
     <script src="/js/jquery.js"></script>
