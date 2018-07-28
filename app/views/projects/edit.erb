@@ -1,6 +1,8 @@
-<h2> Edit Project </h2>
+<h1 id="edit"> Edit Project </h1>
 
-<form method="post" action="/projects/<%= @project.id %>">
+<p>Remember to click Submit when you're done editing!</p>
+
+<form method="post" action="/projects/<%= @project.id %>" class="form card large">
 
   <input name="_method" type="hidden" value="PATCH">
 
