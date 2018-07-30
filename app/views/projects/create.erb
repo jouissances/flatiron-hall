@@ -1,22 +1,46 @@
 <h1 id="create">Submit Your Project!</h1>
 
-<p>For the video URL, please copy-and-paste the URL included in the iframe tag of your video!</p>
+<p class="caption">For the video URL, please copy-and-paste the video URL included in the <code>iframe</code> tag of your video! Otherwise, your project thumbnail might not show.</p>
 
 <form method="POST" action="/projects" class="form card large">
 
-    <p>Project Title: <input type="text" name="title"></p>
-    <p>Category: 
-      <input type="radio" name="category" value="CLI">CLI
-      <input type="radio" name="category" value="Sinatra">Sinatra
-      <input type="radio" name="category" value="Rails">Rails
-      <input type="radio" name="category" value="React">React
-      <input type="radio" name="category" value="Others">Others
-    </p>
-    <p>Project Description: <input type="text" name="description"></p>
-    <p>GitHub Repo: <input type="text" name="github"></p>
-    <p>Project URL: <input type="text" name="external_uri"></p>
-    <p>Video URL: <input type="text" name="video_url"> </p>
+  <div class="field radio-group">
+      <input type="radio" name="category" id="cat-1" value="CLI" required/>
+        <label for="cat-1" id="radio-label">CLI</label>
+      <input type="radio" name="category" id="cat-2" value="Sinatra" />
+        <label for="cat-2" id="radio-label">Sinatra</label>
+      <input type="radio" name="category" id="cat-3" value="Rails" />
+        <label for="cat-3" id="radio-label">Rails</label>
+      <input type="radio" name="category" id="cat-4" value="React" />
+        <label for="cat-4" id="radio-label">React</label>
+      <input type="radio" name="category" id="cat-5" value="Others" />
+        <label for="cat-5" id="radio-label">Others</label>        
+  </div>
 
-  <input type="submit" id="submit" value="Submit">
+  <div class="field">
+    <input type="text" name="title" placeholder="Project Title" required/>
+  </div>
+
+  <div class="field">  
+    <input type="text" name="github" placeholder="GitHub Repo" required/>
+  </div>
+
+  <div class="field">
+    <input type="text" name="external_uri" placeholder="Project URL" required/>
+  </div>
+  
+  <div class="field">
+    <input type="text" name="blog_url" placeholder="Blog URL" required/>
+  </div>
+
+  <div class="field">
+    <textarea type="comment" name="description" rows="4" cols="33" maxlength="200" wrap="hard" placeholder="Project Description" required></textarea>
+  </div>
+
+  <div class="field">
+    <input type="text" name="video_url" placeholder="Video URL (Optional)"/>
+  </div>
+
+  <input type="submit" id="submit" value="Submit"/>
 
 </form>
