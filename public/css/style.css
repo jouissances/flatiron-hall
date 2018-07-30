@@ -92,15 +92,15 @@ form p {
 }
 
 #register,
-#about {
-  margin-top: 10vh;
+#about,
+#login {
+  margin-top: 8vh;
   font-family: 'Px Grotesk';
 }
 
 #welcome,
 #create,
 #edit,
-#login
 #submit {
   margin-top: 5vh;
   font-family: 'Px Grotesk';
