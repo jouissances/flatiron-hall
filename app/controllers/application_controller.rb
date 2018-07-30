@@ -7,7 +7,7 @@ class ApplicationController < Sinatra::Base
     configure do
         enable :sessions
         register Sinatra::Flash
-        set :session_secret, 'hall_secret'
+        set :session_secret, ENV.fetch('SESSION_SECRET') 
         set :public_folder, 'public'
         set :views, 'app/views'
     end
