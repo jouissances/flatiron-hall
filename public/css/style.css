@@ -41,6 +41,11 @@ h2 {
   #project-title a {
     font-family: 'Px Grotesk Bold';
     font-size: 24px;
+    transition: all 300ms ease-in;
+  }
+
+  #project-title a:hover {
+    color: #00BDE7;
   }
 
   .left {
@@ -87,7 +92,6 @@ form p {
 }
 
 #register,
-#login,
 #about {
   margin-top: 10vh;
   font-family: 'Px Grotesk';
@@ -96,6 +100,7 @@ form p {
 #welcome,
 #create,
 #edit,
+#login
 #submit {
   margin-top: 5vh;
   font-family: 'Px Grotesk';
