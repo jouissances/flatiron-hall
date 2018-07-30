@@ -4,13 +4,13 @@
 
 <h1 id="top-h2">Your Projects</h2>
 
-<% if !@projects %>
-    <p>Oops! We're still working to get more users on board! Please bear with us.</p>
+<% if @projects.count == 0 %>
+    <p class="caption border">Submit a project to fill this space up!</p>
 <% else %>
-    <div class="projects">
+    <div class="projects border">
         <% @projects.each do |project| %>
             <div class="project">
-                <h2 id="project-title"><a href="/projects/<%= project.id %>"><%= project.title %></a> </h2>
+                <h2 id="project-title"><a href="/projects/<%= project.slug %>"><%= project.title %></a> </h2>
                 <div class="video">
                     <iframe src="<%= project.video_url %>" width="640" height="400" frameborder="0" allowfullscreen></iframe>
                 </div>
@@ -18,10 +18,7 @@
                 <p id="description"> <%= project.description %> </p>
                 <p><a href="<%= project.github %>" id="link-blue">GitHub Repo</a> </p>
                 <p><a href="<%= project.external_uri %>" id="link-blue">Project URL</a> </p>
-                <p>Made by  <em><a href="/users/<%= project.user.slug %>" id="link-blue"><%= project.user.username %></a></em ></p>
             </div>
         <% end %>
     </div>
 <% end %>
-
-<p><button><a href="/logout">Log Out</a></button></p>
