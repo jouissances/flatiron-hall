@@ -1,7 +1,13 @@
 $('.menu-toggle').on('click', function() {
     $('.menu').toggleClass('open');
     $('.main').toggleClass('translucent');
+    $('header #title').toggleClass('translucent');
+    $('header .nano-content').toggleClass('translucent');
   return false;
+})
+
+$('.close').on('click', function() {
+  $('.alert-box').toggleClass('hide');
 })
 
 $('.sub-menu > a').on('click', function() {
