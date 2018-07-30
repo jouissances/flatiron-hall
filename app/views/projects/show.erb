@@ -47,7 +47,7 @@
   <div class="buttons">
     <a href="/projects/<%= @project.id %>/edit"><button>Edit Project</button></a>
 
-    <form method="POST" action="/projects/<%= @project.id %>/delete" class="form small">
+    <form method="POST" action="/projects/<%= @project.slug %>/delete" class="form small">
 
       <input name="_method" type="hidden" value="DELETE"/>
       <input type="submit" value="Delete Project" id="delete"/>
