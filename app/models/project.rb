@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
    belongs_to :user 
 
-   validates_presence_of :title, :category, :description, :github, :external_uri
+   validates_presence_of :title, :category, :description, :github, :external_uri, :blog_url
 
    def slug
         title.downcase.gsub(" ","-")
