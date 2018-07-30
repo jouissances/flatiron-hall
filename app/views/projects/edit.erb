@@ -1,24 +1,54 @@
 <h1 id="edit"> Edit Project </h1>
 
-<p>Remember to click Submit when you're done editing!</p>
+<p class="caption">Remember to click Submit when you're done editing!</p>
 
 <form method="post" action="/projects/<%= @project.id %>" class="form card large">
 
-  <input name="_method" type="hidden" value="PATCH">
+  <input name="_method" type="hidden" value="PATCH"/>
 
-  <p>Project Title: <input type="text" name="title" value="<%= @project.title %>"></p>
-  <p>Category: 
-    <input type="radio" name="category" value="CLI" <%='checked' if @project.category == "CLI" %>>CLI
-    <input type="radio" name="category" value="Sinatra" <%='checked' if @project.category == "Sinatra" %>>Sinatra
-    <input type="radio" name="category" value="Rails" <%='checked' if @project.category == "Rails" %>>Rails
-    <input type="radio" name="category" value="React" <%='checked' if @project.category == "React" %>>React
-    <input type="radio" name="category" value="Others" <%='checked' if @project.category == "Others" %>>Others
-  </p>
-  <p>Project Description: <input type="text" name="description" value="<%= @project.description %>"></p>
-  <p>GitHub Repo: <input type="text" name="github" value="<%= @project.github %>"></p>
-  <p>Project URL: <input type="text" name="external_uri" value="<%= @project.external_uri %>"></p>
-  <p>Video URL: <input type="text" name="video_url" value="<%= @project.video_url%>"> </p>
+<div class="field radio-group">
+    <input type="radio" name="category" id="cat-1" value="CLI" <%='checked' if @project.category == "CLI" %>/>
+      <label for="cat-1" id="radio-label">CLI</label>
+    <input type="radio" name="category" id="cat-2" value="Sinatra" <%='checked' if @project.category == "Sinatra" %>/>
+      <label for="cat-2" id="radio-label">Sinatra</label>
+    <input type="radio" name="category" id="cat-3" value="Rails" <%='checked' if @project.category == "Rails" %>/>
+      <label for="cat-3" id="radio-label">Rails</label>
+    <input type="radio" name="category" id="cat-4" value="React" <%='checked' if @project.category == "React" %>/>
+      <label for="cat-4" id="radio-label">React</label>
+    <input type="radio" name="category" id="cat-5" value="Others" <%='checked' if @project.category == "Others" %>/>
+      <label for="cat-5" id="radio-label">Others</label>
+  </div>
 
-  <input type="submit" value="Submit">
+<div class="field column">
+  <span class="info-title edit">Project Title</span>
+  <input type="text" name="title" value="<%= @project.title %>" placeholder="Project Title"/>
+</div>
+
+<div class="field column">
+  <span class="info-title edit">GitHub Repo</span>
+  <input type="text" name="github" value="<%= @project.github %>" placeholder="GitHub Repo"/>
+</div>
+ 
+<div class="field column"> 
+  <span class="info-title edit">Project URL</span>
+  <input type="text" name="external_uri" value="<%= @project.external_uri %>" placeholder="Project URL"/>
+</div>
+
+<div class="field column"> 
+  <span class="info-title edit">Blog URL</span>
+  <input type="text" name="blog_url" value="<%= @project.blog_url %>" placeholder="Blog URL"/>
+</div>
+
+<div class="field column">
+  <span class="info-title edit">Project Description</span>
+  <textarea type="comment" name="description" rows="5" cols="33" maxlength="200" wrap="hard" placeholder="Project Description"> <%= @project.description %> </textarea>
+</div>
+  
+<div class="field column">
+  <span class="info-title edit">Video URL</span>
+  <input type="text" name="video_url" value="<%= @project.video_url%>" placeholder="Video URL (Optional)"/>
+</div>
+
+  <input type="submit" id="submit" value="Submit">
 
 </form>
