@@ -40,6 +40,7 @@ class ProjectsController < ApplicationController
     end
 
     get '/projects/:slug' do
+      @user = current_user
       @project = Project.find_by_slug(params[:slug])
       erb :'projects/show'
     end
