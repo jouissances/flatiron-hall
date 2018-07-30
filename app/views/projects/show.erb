@@ -45,7 +45,7 @@
 
 <% if @user == @project.user %>
   <div class="buttons">
-    <a href="/projects/<%= @project.id %>/edit"><button>Edit Project</button></a>
+    <a href="/projects/<%= @project.slug %>/edit"><button>Edit Project</button></a>
 
     <form method="POST" action="/projects/<%= @project.slug %>/delete" class="form small">
 
