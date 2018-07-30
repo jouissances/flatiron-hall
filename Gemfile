@@ -11,6 +11,7 @@ gem 'sinatra-flash'
 gem 'rails_12factor'
 gem 'foreman'
 gem 'dotenv'
+gem 'pg'
 
 group :development do
   gem 'sqlite3'
