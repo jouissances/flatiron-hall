@@ -1,3 +1,8 @@
+var http = require("http");
+setInterval(function() {
+    http.get("http://flatiron-hall.herokuapp.com");
+}, 300000);
+
 $('.menu-toggle').on('click', function() {
     $('.menu').toggleClass('open');
     $('.main').toggleClass('translucent');
