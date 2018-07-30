@@ -45,9 +45,9 @@ class ProjectsController < ApplicationController
       erb :'projects/show'
     end
   
-    get '/projects/:id/edit' do
+    get '/projects/:slug/edit' do
       if logged_in?
-        @project = Project.find(params[:id])
+        @project = Project.find(params[:slug])
         if @project && @project.user == current_user
           erb :'projects/edit'
         else
@@ -58,16 +58,16 @@ class ProjectsController < ApplicationController
       end
     end
 
-    patch '/projects/:id' do
+    patch '/projects/:slug' do
         if logged_in?
           @user = current_user
-          @project = Project.find(params[:id])
+          @project = Project.find(params[:slug])
           if params[:title] == ""
-            redirect to "/projects/#{@project.id}/edit"
+            redirect to "/projects/#{@project.slug}/edit"
           else
             if @project && @project.user == current_user
               @project.update(:title => params[:title], :category => params[:category], :description => params[:description], :github => params[:github], :external_uri => params[:external_uri], :video_url => params[:video_url], :blog_url => params[:blog_url])
-              redirect to "/projects/#{@project.id}"
+              redirect to "/projects/#{@project.slug}"
             else
               redirect to '/projects'
             end
@@ -80,7 +80,7 @@ class ProjectsController < ApplicationController
     delete '/projects/:id/delete' do
         if logged_in?
             @user = current_user
-            @project = Project.find(params[:id])
+            @project = Project.find(params[:slug])
             if @project && @project.user == current_user
                 @project.destroy
             end
