@@ -40,12 +40,8 @@ class ProjectsController < ApplicationController
     end
 
     get '/projects/:slug' do
-      if logged_in?
-        @project = Project.find_by_slug(params[:slug])
-        erb :'projects/show'
-      else
-        redirect to '/login'
-      end
+      @project = Project.find_by_slug(params[:slug])
+      erb :'projects/show'
     end
   
     get '/projects/:id/edit' do
