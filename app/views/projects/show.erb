@@ -1,24 +1,57 @@
-<div class="project">
-  <p>Project Title: <%= @project.title %> </p>
-  <div class="video">
-    <iframe src="<%= @project.video_url %>" width="640" height="400" frameborder="0" allowfullscreen></iframe>
+<div class="project extra-large">
+  <h2 id="project-title" class="left"> <%= @project.title %> </h2>
+  <p id="project-description"> <%= @project.description %> </p>
+  <div id="main-wrapper">
+    <div class="video-wrapper">
+      <div class="video">
+        <iframe src="<%= @project.video_url %>" width="640" height="400" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div id="info-wrapper">
+
+      <div class="info-row">
+        <span class="info-title">Category</span>
+        <span class="info"> <%= @project.category %> </span>
+      </div>
+
+      <div class="info-row">
+        <span class="info-title">Submitted On</span>
+        <span class="info"> <%= @project.created_at.strftime("%d %B %Y") %> </span>
+      </div>
+
+      <div class="info-row">
+        <img src="/icons/link.png"/>
+        <span class="info"> <a href="<%= @project.external_uri %>" id="link-blue"><%= @project.external_uri %></a> </span>
+      </div>
+
+      <div class="info-row">
+        <span class="info-title">GitHub</span>
+        <span class="info"> <a href="<%= @project.github %>" id="link-blue"><%= @project.github %></a> </span>
+      </div>
+
+      <div class="info-row">
+        <span class="info-title">Blog</span>
+        <span class="info"> <a href="<%= @project.blog_url %>" id="link-blue"><%= @project.blog_url %></a> </span>
+      </div>
+
+      <div class="info-row">
+        <span class="info-title">Creator</span>
+        <span class="info"> <a href="/users/<%= @project.user.slug %>" id="link-blue"><%= @project.user.username %></a> </span>
+      </div>
+
+    </div>
   </div>
-  <p>Category: <%= @project.category %> </p>
-  <p>Description: <%= @project.description %> </p>
-  <p>GitHub Repo: <a href="<%= @project.github %>" id="link-blue"><%= @project.github %></a> </p>
-  <p>Project URL: <a href="<%= @project.external_uri %>" id="link-blue"><%= @project.external_uri %></a> </p>
-  <p>Made by <a href="/users/<%= @project.user.slug %>" id="link-blue"><%= @project.user.username %></a> </p>
 </div>
 
 <% if @user == @project.user %>
-  <button class="center"><a href="/projects/<%= @project.id %>/edit">Edit Project </a></button>
+  <div class="buttons">
+    <a href="/projects/<%= @project.id %>/edit"><button>Edit Project</button></a>
 
-  <form method="POST" action="/projects/<%= @project.id %>/delete" class="form">
+    <form method="POST" action="/projects/<%= @project.id %>/delete" class="form small">
 
-    <input name="_method" type="hidden" value="DELETE">
-    <input type="submit" id="submit" value="Delete Project">
+      <input name="_method" type="hidden" value="DELETE"/>
+      <input type="submit" value="Delete Project" id="delete"/>
 
-  </form>
-<% else %>
-  <% nil %>
+    </form>
+  </div>
 <% end %>
