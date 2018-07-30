@@ -1,15 +1,23 @@
-<h1 id="register">Register Here!</h1>
+<h1 id="register">Register</h1>
 
-<p>Try to use your Learn.co username to prevent duplicates!</p>
+<p class="caption">Try to use your Learn.co username to prevent duplicates!</p>
 
 <div class="form card">
     <form method="POST" action="/register">
 
-        <p>Username: <input type="text" name="username"></p>
-        <p>E-mail: <input type="text" name="email"></p>
-        <p>Password: <input type="password" name="password"></p>
+        <div class="field">
+            <input type="text" name="username" placeholder="Username"/>
+        </div>
 
-    <input type="submit" id="submit" value="Sign Up">
+        <div class="field">
+            <input type="text" name="email" placeholder="E-mail"/>
+        </div>
+            
+        <div class="field">
+            <input type="password" name="password" placeholder="Password"/>
+        </div>
+
+    <input type="submit" id="submit" value="Sign Up"/>
 
     </form>
 </div>
