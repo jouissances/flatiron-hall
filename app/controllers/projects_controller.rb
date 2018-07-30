@@ -23,7 +23,6 @@ class ProjectsController < ApplicationController
     post '/projects' do
         if logged_in?
             @user = current_user
-            puts params
             if params.except(:video_url).values.any? { |val| val == "" }
               redirect '/projects/new'
             elsif params[:video_url] == ''
