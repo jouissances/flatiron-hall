@@ -35,7 +35,8 @@ class ProjectsController < ApplicationController
               redirect to "/projects/#{@project.slug}"
             end
         else
-            redirect '/login'
+          flash[:error] = "Please register or sign in to edit your project."
+          redirect '/login'
         end
     end
 
@@ -47,9 +48,8 @@ class ProjectsController < ApplicationController
   
     get '/projects/:slug/edit' do
       if logged_in?
-        @user = current_user
-        @project = Project.find_by_slug(params[:slug])
         if @project && @project.user == current_user
+          @project = Project.find_by_slug(params[:slug])
           erb :'projects/edit'
         else
           redirect to '/projects'
@@ -61,10 +61,16 @@ class ProjectsController < ApplicationController
 
     patch '/projects/:slug' do
         if logged_in?
-          @user = current_user
-          @project = Project.find_by_slug(params[:slug])
           if @project && @project.user == current_user
-            @project.update(:title => params[:title], :category => params[:category], :description => params[:description], :github => params[:github], :external_uri => params[:external_uri], :video_url => params[:video_url], :blog_url => params[:blog_url])
+            @project = Project.find_by_slug(params[:slug])
+            @project.title = params[:title]
+            @project.category = params[:category]
+            @project.description = params[:description]
+            @project.github = params[:github]
+            @project.external_uri = params[:external_uri]
+            @project.video_url = params[:video_url
+            @project.blog_url = params[:blog_url]
+            @project.save
             flash[:success] = "You have successfully edited your submission."
             redirect to "/projects/#{@project.slug}"
           else
