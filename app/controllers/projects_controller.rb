@@ -82,7 +82,7 @@ class ProjectsController < ApplicationController
         end
       end
     
-    delete '/projects/:id/delete' do
+    delete '/projects/:slug/delete' do
         if logged_in?
             @project = Project.find_by_slug(params[:slug])
             if @project && @project.user == current_user
