@@ -47,6 +47,7 @@ class ProjectsController < ApplicationController
   
     get '/projects/:slug/edit' do
       if logged_in?
+        @user = current_user
         @project = Project.find_by_slug(params[:slug])
         if @project && @project.user == current_user
           erb :'projects/edit'
@@ -62,15 +63,12 @@ class ProjectsController < ApplicationController
         if logged_in?
           @user = current_user
           @project = Project.find_by_slug(params[:slug])
-          if params[:title] == ""
-            redirect to "/projects/#{@project.slug}/edit"
+          if @project && @project.user == current_user
+            @project.update(:title => params[:title], :category => params[:category], :description => params[:description], :github => params[:github], :external_uri => params[:external_uri], :video_url => params[:video_url], :blog_url => params[:blog_url])
+            flash[:success] = "You have successfully edited your submission."
+            redirect to "/projects/#{@project.slug}"
           else
-            if @project && @project.user == current_user
-              @project.update(:title => params[:title], :category => params[:category], :description => params[:description], :github => params[:github], :external_uri => params[:external_uri], :video_url => params[:video_url], :blog_url => params[:blog_url])
-              redirect to "/projects/#{@project.slug}"
-            else
-              redirect to '/projects'
-            end
+            redirect to '/projects'
           end
         else
           redirect to '/login'
@@ -83,8 +81,9 @@ class ProjectsController < ApplicationController
             @project = Project.find_by_slug(params[:slug])
             if @project && @project.user == current_user
                 @project.destroy
-            end
-            redirect to '/projects'
+                flash[:notice] = "You have deleted your submission."
+                redirect to '/projects'
+              end
         else
           redirect to '/login'
         end
