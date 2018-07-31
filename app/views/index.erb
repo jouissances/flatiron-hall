@@ -1,7 +1,7 @@
 <div class="projects">
 
     <% @projects.each do |project| %>
-        <div class="project <%= project.category %>">
+        <div class="project <%= project.category.downcase %>">
             <h2 id="project-title"> <a href="/projects/<%= project.slug %>"><%= project.title %></a> </h2>
             <div class="video">
                 <iframe src="<%= project.video_url %>" width="640" height="400" frameborder="0" allowfullscreen></iframe>
