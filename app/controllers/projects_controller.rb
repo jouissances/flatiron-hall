@@ -68,7 +68,7 @@ class ProjectsController < ApplicationController
             @project.description = params[:description]
             @project.github = params[:github]
             @project.external_uri = params[:external_uri]
-            @project.video_url = params[:video_url
+            @project.video_url = params[:video_url]
             @project.blog_url = params[:blog_url]
             @project.save
             flash[:success] = "You have successfully edited your submission."
