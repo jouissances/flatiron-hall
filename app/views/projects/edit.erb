@@ -2,7 +2,7 @@
 
 <p class="caption">Remember to click Submit when you're done editing!</p>
 
-<form method="post" action="/projects/<%= @project.id %>" class="form card large">
+<form method="POST" action="/projects/<%= @project.slug %>" class="form card large">
 
   <input name="_method" type="hidden" value="PATCH"/>
 
