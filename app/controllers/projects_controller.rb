@@ -74,6 +74,7 @@ class ProjectsController < ApplicationController
             flash[:success] = "You have successfully edited your submission."
             redirect to "/projects/#{@project.slug}"
           else
+            flash[:error] = "Sorry, we're unable to do that for you right now."
             redirect to '/projects'
           end
         else
