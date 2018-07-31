@@ -35,7 +35,6 @@ class ProjectsController < ApplicationController
               redirect to "/projects/#{@project.slug}"
             end
         else
-          flash[:error] = "Please register or sign in to edit your project."
           redirect '/login'
         end
     end
@@ -48,10 +47,11 @@ class ProjectsController < ApplicationController
   
     get '/projects/:slug/edit' do
       if logged_in?
+        @project = Project.find_by_slug(params[:slug])
         if @project && @project.user == current_user
-          @project = Project.find_by_slug(params[:slug])
           erb :'projects/edit'
         else
+          flash[:error] = "Please register or sign in to edit your project."
           redirect to '/projects'
         end
       else
@@ -61,8 +61,8 @@ class ProjectsController < ApplicationController
 
     patch '/projects/:slug' do
         if logged_in?
+          @project = Project.find_by_slug(params[:slug])
           if @project && @project.user == current_user
-            @project = Project.find_by_slug(params[:slug])
             @project.title = params[:title]
             @project.category = params[:category]
             @project.description = params[:description]
