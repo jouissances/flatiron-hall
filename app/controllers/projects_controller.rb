@@ -86,14 +86,12 @@ class ProjectsController < ApplicationController
         if logged_in?
             @project = Project.find_by_slug(params[:slug])
             if @project && @project.user == current_user
-              @project.destroy
+              @project.delete
               flash[:notice] = "You have deleted your submission."
-              redirect to '/projects'
-            else
-              flash[:error] = "Please register or sign in to delete your project."
               redirect to '/projects'
             end
         else
+          flash[:error] = "Please register or sign in to delete your project."
           redirect to '/login'
         end
     end
