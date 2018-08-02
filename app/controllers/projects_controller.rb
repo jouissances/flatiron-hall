@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
               redirect to "/projects/#{@project.slug}"
             else
               @project = Project.create(:id => params[:id], :title => params[:title], :category => params[:category], :description => params[:description], :github => params[:github], :external_uri => params[:external_uri], :user_id => session[:user_id], :video_url => params[:video_url], :blog_url => params[:blog_url], :created_at => params[:created_at])
-              flash[:success] = %Q[You have successfully submitted your project. Click <a href="/" id="link-blue">here</a> to return to the homepage.]
+              flash[:success] = %Q[You have successfully submitted your project. Click <a href="/" id="link-underline">here</a> to return to the homepage.]
               redirect to "/projects/#{@project.slug}"
             end
         else

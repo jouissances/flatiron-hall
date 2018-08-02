@@ -396,6 +396,10 @@ a {
   color: #0097B8;
 }
 
+#link-underline {
+  text-decoration: underline;
+}
+
 .projects {
   display: flex;
   flex-wrap: wrap;
