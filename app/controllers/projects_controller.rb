@@ -29,11 +29,11 @@ class ProjectsController < ApplicationController
               params[:video_url] = "https://previews.dropbox.com/p/orig/AALLu4qexe4eU7T5bGxzyH9_PR8rB915D7agQUw_uIzME3onBZDmO12fowl6_McLBUqDARxX3KSMvEATbxJee989K67r4KKGASU1-9165ihl1tIUQXq59G-3vHdEKiTI2J2WfY2Vu9hP3GYc_Iew4HQx7aaOYTLugxx-m9Xj6ENJmNCmYfcOIdKId_kGbeGysGcCYA_WpGkP-fCT_ClrTCkt/p.gif?size=1024x768&size_mode=3"
               # Project.columns_hash['video_url'].default
               @project = Project.create(:id => params[:id], :title => params[:title], :category => params[:category], :description => params[:description], :github => params[:github], :external_uri => params[:external_uri], :user_id => session[:user_id], :video_url => params[:video_url], :blog_url => params[:blog_url], :created_at => params[:created_at])
-              flash[:success] = "You have successfully submitted your project."
+              flash[:success] = %Q[You have successfully submitted your project. Click <a href="/" id="link-blue">here</a> to return to the homepage.]
               redirect to "/projects/#{@project.slug}"
             else
               @project = Project.create(:id => params[:id], :title => params[:title], :category => params[:category], :description => params[:description], :github => params[:github], :external_uri => params[:external_uri], :user_id => session[:user_id], :video_url => params[:video_url], :blog_url => params[:blog_url], :created_at => params[:created_at])
-              flash[:success] = "You have successfully submitted your project."
+              flash[:success] = %Q[You have successfully submitted your project. Click <a href="/" id="link-blue">here</a> to return to the homepage.]
               redirect to "/projects/#{@project.slug}"
             end
         else
