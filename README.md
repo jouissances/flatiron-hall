@@ -1,6 +1,6 @@
 # Flatiron Hall
 
-This web application serves as a platform for the Students of Flatiron School to showcase their portfolio projects, favourite side projects, and beyond.
+This web application serves as a platform for the Students of Flatiron School to showcase their portfolio projects, favourite side projects, and beyond. Link is [here](https://flatiron-hall.herokuapp.com/register#).
 
 ## Usage
 
