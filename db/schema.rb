@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180729065756) do
+ActiveRecord::Schema.define(version: 20180812114044) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "title"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20180729065756) do
     t.string   "github"
     t.string   "external_uri"
     t.integer  "user_id"
-    t.string   "video_url",    default: "https://i.imgur.com/x3o5Us1.png"
+    t.string   "video_url",    default: "https://previews.dropbox.com/p/orig/AALLu4qexe4eU7T5bGxzyH9_PR8rB915D7agQUw_uIzME3onBZDmO12fowl6_McLBUqDARxX3KSMvEATbxJee989K67r4KKGASU1-9165ihl1tIUQXq59G-3vHdEKiTI2J2WfY2Vu9hP3GYc_Iew4HQx7aaOYTLugxx-m9Xj6ENJmNCmYfcOIdKId_kGbeGysGcCYA_WpGkP-fCT_ClrTCkt/p.gif?size=1024x768&size_mode=3"
     t.string   "blog_url"
     t.datetime "created_at"
     t.datetime "updated_at"
