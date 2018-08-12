@@ -98,7 +98,7 @@ class ProjectsController < ApplicationController
               @project.save
               flash[:success] = "You have successfully edited your submission."
               redirect to "/projects/#{@project.slug}"
-            elsif params[:external_uri] = ""
+            elsif params[:external_uri] == ''
               params[:external_uri] = "N/A"
               @project.title = params[:title]
               @project.category = params[:category]
