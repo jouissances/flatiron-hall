@@ -28,11 +28,6 @@
   <span class="info-title edit">GitHub Repo</span>
   <input type="text" name="github" value="<%= @project.github %>" placeholder="GitHub Repo"/>
 </div>
- 
-<div class="field column"> 
-  <span class="info-title edit">Project URL</span>
-  <input type="text" name="external_uri" value="<%= @project.external_uri %>" placeholder="Project URL"/>
-</div>
 
 <div class="field column"> 
   <span class="info-title edit">Blog URL</span>
@@ -42,6 +37,11 @@
 <div class="field column">
   <span class="info-title edit">Project Description</span>
   <textarea type="comment" name="description" rows="5" cols="33" maxlength="200" wrap="hard" placeholder="Project Description"> <%= @project.description %> </textarea>
+</div>
+ 
+<div class="field column"> 
+  <span class="info-title edit">Project URL</span>
+  <input type="text" name="external_uri" value="<%= @project.external_uri %>" placeholder="Project URL"/>
 </div>
   
 <div class="field column">

@@ -19,10 +19,15 @@
         <span class="info"> <%= @project.created_at.strftime("%d %B %Y") %> </span>
       </div>
 
-      <div class="info-row">
-        <img src="/icons/link.png"/>
-        <span class="info"> <a href="<%= @project.external_uri %>" id="link-blue"><%= @project.external_uri %></a> </span>
-      </div>
+      <% if @project.external_uri == "N/A" %>
+        <% nil %>
+      <% else %>
+        <div class="info-row">
+          <img src="/icons/link.png"/>
+          <span class="info"> <a href="<%= @project.external_uri %>" id="link-blue"><%= @project.external_uri %></a> </span>
+        </div>
+      <% end %>
+      
 
       <div class="info-row">
         <span class="info-title">GitHub</span>
